@@ -1,11 +1,14 @@
 package guru.springframework.custom.v001.services;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import guru.springframework.custom.v001.domains.Category;
 import guru.springframework.custom.v001.mappers.CategoryMapper;
 import guru.springframework.custom.v001.models.CategoryDto;
+import guru.springframework.custom.v001.repositories.CategoryRepository;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -14,19 +17,21 @@ public class CategoryServiceImpl implements CategoryService {
 
     private final CategoryMapper categoryMapper;
     
-    // TODO A IMPLEMENTER
-//    private final CategoryRepository categoryRepository;
+    private final CategoryRepository categoryRepository;
 	
 	@Override
 	public List<CategoryDto> recupererListeDesCategories() {
-		// TODO Auto-generated method stub
-		return null;
+		List<CategoryDto> listeCategoryDto = categoryRepository.findAll()
+                .stream()
+                .map(categoryMapper::categoryToCategoryDto)
+                .collect(Collectors.toList());
+		return listeCategoryDto;
 	}
 
 	@Override
 	public CategoryDto recupererCategorieParId(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Category category = categoryRepository.findById(id).orElseThrow(() -> new RuntimeException("Unite de mesure non trouvee"));
+		return categoryMapper.categoryToCategoryDto(category);
 	}
 
 }
