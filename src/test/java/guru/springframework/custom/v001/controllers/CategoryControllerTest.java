@@ -103,7 +103,19 @@ public class CategoryControllerTest {
 //    	BDDMockito.given(categoryRepository.findAll()).willReturn(anyList());
 //    	
 //    	/* Behaviour Driven Development - When */
-//    	BDDMockito.when(categoryService.recupererListeDesCategories()).thenReturn(anyList());
+//    	CategoryDto categorie01 = new CategoryDto();
+//    	categorie01.setId(ID_01);
+//    	categorie01.setName(NOM_01);
+//
+//    	CategoryDto categorie02 = new CategoryDto();
+//    	categorie02.setId(ID_02);
+//    	categorie02.setName(NOM_02);
+//    	
+//    	List<CategoryDto> listeCategoryDto = new ArrayList<>();
+//    	listeCategoryDto.add(categorie01);
+//    	listeCategoryDto.add(categorie02);
+//    	
+//    	BDDMockito.when(categoryService.recupererListeDesCategories()).thenReturn(listeCategoryDto);
 //    	
 //    	/* Behaviour Driven Development - Then */
 //    	CategoryListDto categoryListDto = categoryController.recupererListeDesCategories();
