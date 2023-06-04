@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CategoryListDto {
+public class CustomerListDto {
 
-	List<CategoryDto> categories;
+	List<CustomerDto> customers;
 }

@@ -2,15 +2,8 @@ package guru.springframework.custom.v001.services;
 
 import java.util.List;
 
-import guru.springframework.custom.v001.controllers.Create;
-import guru.springframework.custom.v001.controllers.Get;
-import guru.springframework.custom.v001.controllers.Lists;
-import guru.springframework.custom.v001.controllers.a;
-import guru.springframework.custom.v001.controllers.customer;
-import guru.springframework.custom.v001.controllers.id;
-import guru.springframework.custom.v001.controllers.orders;
-import guru.springframework.custom.v001.controllers.the;
-import guru.springframework.custom.v001.models.CategoryDto;
+import guru.springframework.custom.v001.models.CustomerDto;
+import guru.springframework.custom.v001.models.OrderDto;
 
 public interface CustomerService {
 
@@ -26,13 +19,13 @@ public interface CustomerService {
 	POST /customers/{id}/orders/			Create an order for a customer
 	*/
 	
-	
-	List<ClientDto> recupererListeDesClients();
-	ClientDto creerClient();
+	// TODO A VERIFIER
+	List<CustomerDto> recupererListeDesClients();
+	CustomerDto creerClient();
 	void supprimerClientParId(Long id);
-	ClientDto recupererClientParId(Long id);
-	ClientDto majClientParId(Long id);
-	ClientDto remplacerClientParId(Long id);
-	CommandeDto recupererCommandeClientParId(Long id);
-	CommandeDto creerCommandeClientParId(Long id);
+	CustomerDto recupererClientParId(Long id);
+	CustomerDto majClientParId(Long id);
+	CustomerDto remplacerClientParId(Long id);
+	OrderDto recupererCommandeClientParId(Long id);
+	OrderDto creerCommandeClientParId(Long id);
 }

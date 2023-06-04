@@ -1,7 +1,5 @@
 package guru.springframework.custom.v001.models;
 
-import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +9,10 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CategoryListDto {
+public class OrderDto {
 
-	List<CategoryDto> categories;
+    private Long id;
+    private String name;
+    private String quantity;
+    private String barCode;
 }
