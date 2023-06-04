@@ -3,17 +3,13 @@ package guru.springframework.custom.v001.controllers;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.assertj.core.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -79,9 +75,30 @@ public class CategoryControllerTest {
     }
     
     @Test
-    public void getCategories_BDD() {
+    public void getCategoryById() throws Exception {
+    	
+       	/* Mockito Standard - Given */
+    	CategoryDto categorie01 = new CategoryDto();
+    	categorie01.setId(ID_01);
+    	categorie01.setName(NOM_01);
 
-    	// TODO A CORRIGER
+    	/* Mockito Standard - When */
+    	Mockito.when(categoryService.recupererCategorieParId(anyLong())).thenReturn(categorie01);
+    	
+    	/* Mockito Standard - Then */
+    	mockMvc.perform(
+    				MockMvcRequestBuilders.get(API_VI_FULL_URL + "/1")
+    				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+    			)
+    			.andExpect(status().isOk());
+
+    	verify(categoryService, times(1)).recupererCategorieParId(anyLong());
+    }
+
+    
+	// TODO A CORRIGER / IMPLEMENTER
+//    @Test
+//    public void getCategories_BDD() {
 //    	/* Behaviour Driven Development - Given */
 //    	BDDMockito.given(categoryRepository.findAll()).willReturn(anyList());
 //    	
@@ -97,37 +114,23 @@ public class CategoryControllerTest {
 //    	
 //    	VerificationMode verificationMode = VerificationModeFactory.atLeastOnce();
 //    	BDDMockito.then(categoryListDto).should(verificationMode);
-    }
-    
-    
-    
-    @Test
-    public void getCategoryById() {
-    	
-    	/* Mockito Standard - Given */
+//    }
 
-    	/* Mockito Standard - When */
-
-    	/* Mockito Standard - Then */
-    	
-    	
-    	recupererCategorieParId
-    }
-
-    @Test
-    public void getCategoryById_BDD() {
-    	
-    	/* Behaviour Driven Development - Given */
-    	BDDMockito.given(XXX);
-    	
-    	/* Behaviour Driven Development - When */
-    	BDDMockito.when(XXX);
-    	
-    	/* Behaviour Driven Development - Then */
-    	BDDMockito.then(XXX);
-    	
-    	
-    	recupererCategorieParId
-    }
+    // TODO A CORRIGER / IMPLEMENTER
+//    @Test
+//    public void getCategoryById_BDD() {
+//    	
+//    	/* Behaviour Driven Development - Given */
+//    	BDDMockito.given(XXX);
+//    	
+//    	/* Behaviour Driven Development - When */
+//    	BDDMockito.when(XXX);
+//    	
+//    	/* Behaviour Driven Development - Then */
+//    	BDDMockito.then(XXX);
+//    	
+//    	
+//    	recupererCategorieParId
+//    }
     
 }
