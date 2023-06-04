@@ -7,25 +7,19 @@ import guru.springframework.custom.v001.models.OrderDto;
 
 public interface CustomerService {
 
-	/*
-	TODO A IMPLEMENTER
-	GET /customers/							Lists all the customers
-	POST /customers/						Create a customer
-	DELETE /customers/{id}					Delete a customer
-	GET /customers/{id}						Get a customer by id
-	PATCH /customers/{id}					Update a customer
-	PUT /customers/{id}						Replace a customer by new data
-	GET /customers/{id}/orders/				Get the orders of a customer
-	POST /customers/{id}/orders/			Create an order for a customer
-	*/
-	
-	// TODO A VERIFIER
 	List<CustomerDto> recupererListeDesClients();
-	CustomerDto creerClient();
-	void supprimerClientParId(Long id);
+	
 	CustomerDto recupererClientParId(Long id);
-	CustomerDto majClientParId(Long id);
-	CustomerDto remplacerClientParId(Long id);
+	
+	CustomerDto creerClient(CustomerDto customerDto);
+	
+	CustomerDto majClientParId(Long id, CustomerDto customerDto);
+	
+	CustomerDto remplacerClientParId(Long id, CustomerDto customerDto);
+	
+	void supprimerClientParId(Long id);
+	
 	OrderDto recupererCommandeClientParId(Long id);
-	OrderDto creerCommandeClientParId(Long id);
+	
+	OrderDto creerCommandeClientParId(OrderDto orderDto);
 }

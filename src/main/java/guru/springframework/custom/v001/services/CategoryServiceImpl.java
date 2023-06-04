@@ -30,7 +30,7 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public CategoryDto recupererCategorieParId(Long id) {
-		Category category = categoryRepository.findById(id).orElseThrow(() -> new RuntimeException("Unite de mesure non trouvee"));
+		Category category = categoryRepository.findById(id).orElseThrow(() -> new RuntimeException("Categorie non trouvee - id : " + id));
 		return categoryMapper.categoryToCategoryDto(category);
 	}
 
