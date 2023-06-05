@@ -13,8 +13,8 @@ import lombok.Setter;
 @AllArgsConstructor
 public class CustomerDto {
 
-    private String firstname;
-    private String lastname;
+    private String firstName;
+    private String lastName;
 
     // TODO CA FAIT QUOI CONCRETEMENT ?
     @JsonProperty("customer_url")
