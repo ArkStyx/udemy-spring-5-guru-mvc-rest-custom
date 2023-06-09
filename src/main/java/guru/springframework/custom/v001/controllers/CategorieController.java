@@ -8,29 +8,29 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import guru.springframework.custom.ApiConnectionUtilities;
-import guru.springframework.custom.v001.models.CategoryDto;
-import guru.springframework.custom.v001.models.CategoryListDto;
-import guru.springframework.custom.v001.services.CategoryService;
+import guru.springframework.custom.v001.models.CategorieDto;
+import guru.springframework.custom.v001.models.CategorieListeDto;
+import guru.springframework.custom.v001.services.CategorieService;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping(CategoryController.FULL_URL)
-public class CategoryController {
+@RequestMapping(CategorieController.FULL_URL)
+public class CategorieController {
 
 	public static final String FULL_URL = ApiConnectionUtilities.BASE_URL_API_V1 + "categories";
 	
-	private final CategoryService categoryService;
+	private final CategorieService categoryService;
 	
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-	public CategoryListDto recupererListeDesCategories() {
-		return new CategoryListDto(categoryService.recupererListeDesCategories());
+	public CategorieListeDto recupererListeDesCategories() {
+		return new CategorieListeDto(categoryService.recupererListeDesCategories());
 	}
 	
     @GetMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
-	public CategoryDto recupererCategorieParId(@PathVariable Long id) {
+	public CategorieDto recupererCategorieParId(@PathVariable Long id) {
 		return categoryService.recupererCategorieParId(id);
 	}
 }

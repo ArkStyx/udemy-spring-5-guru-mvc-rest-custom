@@ -1,18 +1,13 @@
 package guru.springframework.custom.v001.controllers;
 
-import static org.mockito.ArgumentMatchers.anyLong;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import guru.springframework.custom.v001.models.CategoryDto;
-
-public class CustomerControllerTest {
+public class ClientControllerTest {
 
 	// TODO FIXME
 	
@@ -25,17 +20,17 @@ public class CustomerControllerTest {
 	/* BDD - Then */
 
 	@Mock
-	CustomerService customerService;
+	ClientService clientService;
 	
 	@InjectMocks
-	CustomerController customerController;
+	ClientController clientController;
 	
 	MockMvc mockMvc;
 	
 	@BeforeEach
 	public void setUp() {
 		MockitoAnnotations.openMocks(this);
-		mockMvc = MockMvcBuilders.standaloneSetup(customerController).build();
+		mockMvc = MockMvcBuilders.standaloneSetup(clientController).build();
 	}
 	
 	GET /customers/							Lists all the customers

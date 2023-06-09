@@ -11,12 +11,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CustomerDto {
+public class ClientDto {
 
-    private String firstName;
-    private String lastName;
+    private String prenom;
+    private String nomDeFamille;
 
     // TODO CA FAIT QUOI CONCRETEMENT ?
     @JsonProperty("customer_url")
-    private String customerUrl;
+    private String urlClient;
 }

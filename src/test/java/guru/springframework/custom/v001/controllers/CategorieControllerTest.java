@@ -19,10 +19,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import guru.springframework.custom.v001.models.CategoryDto;
-import guru.springframework.custom.v001.services.CategoryService;
+import guru.springframework.custom.v001.models.CategorieDto;
+import guru.springframework.custom.v001.services.CategorieService;
 
-public class CategoryControllerTest {
+public class CategorieControllerTest {
 
 	private static final String API_VI_FULL_URL = "/api/v1/categories";
 	
@@ -32,10 +32,10 @@ public class CategoryControllerTest {
 	private static final String NOM_02 = "Legumes";
 	
 	@Mock
-	CategoryService categoryService;
+	CategorieService categoryService;
 	
 	@InjectMocks
-	CategoryController categoryController;
+	CategorieController categoryController;
 	
 	MockMvc mockMvc;
 	
@@ -49,20 +49,20 @@ public class CategoryControllerTest {
     public void getCategories() throws Exception {
 
     	/* Mockito Standard - Given */
-    	CategoryDto categorie01 = new CategoryDto();
+    	CategorieDto categorie01 = new CategorieDto();
     	categorie01.setId(ID_01);
-    	categorie01.setName(NOM_01);
+    	categorie01.setNom(NOM_01);
 
-    	CategoryDto categorie02 = new CategoryDto();
+    	CategorieDto categorie02 = new CategorieDto();
     	categorie02.setId(ID_02);
-    	categorie02.setName(NOM_02);
+    	categorie02.setNom(NOM_02);
     	
-    	List<CategoryDto> listeCategoryDto = new ArrayList<>();
-    	listeCategoryDto.add(categorie01);
-    	listeCategoryDto.add(categorie02);
+    	List<CategorieDto> listeCategorieDto = new ArrayList<>();
+    	listeCategorieDto.add(categorie01);
+    	listeCategorieDto.add(categorie02);
     	
     	/* Mockito Standard - When */
-    	Mockito.when(categoryService.recupererListeDesCategories()).thenReturn(listeCategoryDto);
+    	Mockito.when(categoryService.recupererListeDesCategories()).thenReturn(listeCategorieDto);
     	
     	/* Mockito Standard - Then */
     	mockMvc.perform(
@@ -78,9 +78,9 @@ public class CategoryControllerTest {
     public void getCategoryById() throws Exception {
     	
        	/* Mockito Standard - Given */
-    	CategoryDto categorie01 = new CategoryDto();
+    	CategorieDto categorie01 = new CategorieDto();
     	categorie01.setId(ID_01);
-    	categorie01.setName(NOM_01);
+    	categorie01.setNom(NOM_01);
 
     	/* Mockito Standard - When */
     	Mockito.when(categoryService.recupererCategorieParId(anyLong())).thenReturn(categorie01);

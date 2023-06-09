@@ -1,6 +1,6 @@
 package guru.springframework.custom.v001.controllers;
 
-public class OrderControllerTest {
+public class CommandeControllerTest {
 
 	// TODO FIXME
 	

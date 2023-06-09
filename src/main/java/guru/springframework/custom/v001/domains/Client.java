@@ -12,13 +12,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Customer {
+public class Client {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    private String firstName;
-    private String LastName;
-    private LocalDate birthDate;    
+    private String prenom;
+    private String NomDeFamille;
+    private LocalDate dateDeNaissance;    
 }
