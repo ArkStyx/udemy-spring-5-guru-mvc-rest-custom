@@ -13,6 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class ClientDto {
 
+    private Long id;
     private String prenom;
     private String nomDeFamille;
 
