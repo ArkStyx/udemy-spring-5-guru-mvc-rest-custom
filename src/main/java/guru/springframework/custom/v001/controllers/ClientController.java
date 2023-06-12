@@ -3,6 +3,7 @@ package guru.springframework.custom.v001.controllers;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,6 +30,8 @@ public class ClientController {
 	
 	
 	/*
+	TODO A SUPPRIMER
+	
 	GET /customers/							Lists all the customers
 	POST /customers/						Create a customer
 	DELETE /customers/{id}					Delete a customer
@@ -59,14 +62,33 @@ public class ClientController {
 	}
 	
 	
+	/*
+	TODO A SUPPRIMER
+	
+	PATCH /customers/{id}					Update a customer
+	PUT /customers/{id}						Replace a customer by new data
+	
+	GET /customers/{id}/orders/				Get the orders of a customer
+	POST /customers/{id}/orders/			Create an order for a customer
+	*/
+	
 	
 	ClientDto majClientParId(Long id, ClientDto clientDto);
 	
 	ClientDto remplacerClientParId(Long id, ClientDto clientDto);
 	
-	void supprimerClientParId(Long id);
+	@DeleteMapping("{id}")
+	@ResponseStatus(HttpStatus.OK)
+	public void supprimerClientParId(@PathVariable Long id) {
+		customerService.supprimerClientParId(id);
+	}
+	
 	
 	CommandeDto recupererCommandeClientParId(Long id);
 	
 	CommandeDto creerCommandeClientParId(CommandeDto commandeDto);
+	
+	
+	
+
 }

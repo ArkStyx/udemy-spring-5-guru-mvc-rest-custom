@@ -132,19 +132,7 @@ public class ClientControllerTest {
 		  	
     	verify(clientService, times(1)).recupererClientParId(anyLong());
 	}
-    
-	
-	/*
-	POST /customers/						Create a customer
-	DELETE /customers/{id}					Delete a customer
-	PATCH /customers/{id}					Update a customer
-	PUT /customers/{id}						Replace a customer by new data
-	GET /customers/{id}/orders/				Get the orders of a customer
-	POST /customers/{id}/orders/			Create an order for a customer
-	*/
-	
-	
-    // TODO
+
     @Test
     public void createCustomer() throws Exception {
     	
@@ -169,15 +157,17 @@ public class ClientControllerTest {
     }
     
     
-    // TODO
-//    @Test
-//    public void deleteCustomer() throws Exception {
-//    	
-//    	clientService.supprimerClientParId(null);
-//    	
-//    	DELETE /customers/{id}					Delete a customer
-//    }
-//	
+	
+	/*
+	DELETE /customers/{id}					Delete a customer
+	PATCH /customers/{id}					Update a customer
+	PUT /customers/{id}						Replace a customer by new data
+	GET /customers/{id}/orders/				Get the orders of a customer
+	POST /customers/{id}/orders/			Create an order for a customer
+	*/
+	
+
+	
     // TODO
 //    @Test
 //    public void updateCustomer() throws Exception {
@@ -196,6 +186,27 @@ public class ClientControllerTest {
 //    	PUT /customers/{id}						Replace a customer by new data
 //    }
 //    
+    
+    // TODO
+    @Test
+    public void deleteCustomer() throws Exception {
+    	
+    	/* Mockito Standard - Given */
+    	
+     	/* Mockito Standard - When */
+    	
+    	/* Mockito Standard - Then */
+    	mockMvc.perform(
+    				MockMvcRequestBuilders.delete(API_V1_FULL_URL + "/1")
+    				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+    			)
+    			.andExpect(status().isOk());
+    	
+    	verify(clientService, times(1)).supprimerClientParId(anyLong());
+    }
+    
+    
+    
     // TODO
 //    @Test
 //    public void getOrderByCustomerId() throws Exception {
