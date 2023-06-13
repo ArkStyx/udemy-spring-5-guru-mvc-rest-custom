@@ -84,23 +84,38 @@ public class ClientServiceImpl implements ClientService {
 		return commandeMapper.commandeVersCommandeDto(commandeTrouvee);
 	}
 
+	
+	// TODO A SUPPRIMER -----------------------------------------------------------------------------------------------------------------------------
+	// TODO A SUPPRIMER -----------------------------------------------------------------------------------------------------------------------------
+	// TODO A SUPPRIMER -----------------------------------------------------------------------------------------------------------------------------
+//	@Override
+//	public CommandeDto creerCommandeClientParId(CommandeDto commandeDto) {
+//		Commande commande = commandeMapper.commandeDtoVersCommande(commandeDto);
+//		return sauvegarderEtRetournerCommandeDto(commande);
+//	}
+	
+	// TODO A MODIFIER
 	@Override
-	public CommandeDto creerCommandeClientParId(CommandeDto commandeDto) {
+	public CommandeDto creerCommandeClientParId(Long id, CommandeDto commandeDto) {
 		Commande commande = commandeMapper.commandeDtoVersCommande(commandeDto);
-		return sauvegarderEtRetournerCommandeDto(commande);
+    	Commande commandePourSauvegarde = commandeRepository.save(commande);
+    	
+    	Client clientPourSauvegarde = clientRepository.findById(id).orElseThrow(() -> new RuntimeException("Client non trouvee - id : " + id));
+    	clientPourSauvegarde.getListeDeCommandes().add(commandePourSauvegarde);
+    	clientRepository.save(clientPourSauvegarde);
+    	
+        CommandeDto commandeSauvegardee = commandeMapper.commandeVersCommandeDto(commandePourSauvegarde);
+        return commandeSauvegardee;
 	}
+	// TODO A SUPPRIMER -----------------------------------------------------------------------------------------------------------------------------
+	// TODO A SUPPRIMER -----------------------------------------------------------------------------------------------------------------------------
+	// TODO A SUPPRIMER -----------------------------------------------------------------------------------------------------------------------------
 	
     private ClientDto sauvegarderEtRetournerClientDto(Client client) {
         Client clientPourSauvegarde = clientRepository.save(client);
         ClientDto clientSauvegarde = clientMapper.clientVersClientDto(clientPourSauvegarde);
         clientSauvegarde.setUrlClient(recupererUrlClient(clientPourSauvegarde.getId()));
         return clientSauvegarde;
-    }
-    
-    private CommandeDto sauvegarderEtRetournerCommandeDto(Commande commande) {
-    	Commande commandePourSauvegarde = commandeRepository.save(commande);
-        CommandeDto commandeSauvegardee = commandeMapper.commandeVersCommandeDto(commandePourSauvegarde);
-        return commandeSauvegardee;
     }
     
     private String recupererUrlClient(Long id) {

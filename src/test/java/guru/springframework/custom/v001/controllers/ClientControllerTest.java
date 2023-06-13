@@ -21,6 +21,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import guru.springframework.custom.v001.models.ClientDto;
+import guru.springframework.custom.v001.models.CommandeDto;
 import guru.springframework.custom.v001.services.ClientService;
 
 public class ClientControllerTest {
@@ -40,6 +41,10 @@ public class ClientControllerTest {
 	private static final String URL_CLIENT_01 = "dupont_001";
 	private static final String URL_CLIENT_02 = "dupuis_001";
 	
+	private static final String NUMERO_DE_COMMANDE = "ABC_0123456789";
+	private static final Long QUANTITE_ARTICLE = 1L;
+	private static final String CODE_BARRE = "AB01CD02EF03";
+	
 	@Mock
 	ClientService clientService;
 	
@@ -53,29 +58,6 @@ public class ClientControllerTest {
 		MockitoAnnotations.openMocks(this);
 		mockMvc = MockMvcBuilders.standaloneSetup(clientController).build();
 	}
-	
-	
-	// TODO FIXME
-	
-   	/* Mockito Standard - Given */
-	/* Mockito Standard - When */
-	/* Mockito Standard - Then */
-	
-	/* BDD - Given */
-	/* BDD - When */
-	/* BDD - Then */
-
-	/*
-	GET /customers/							Lists all the customers
-	POST /customers/						Create a customer
-	DELETE /customers/{id}					Delete a customer
-	GET /customers/{id}						Get a customer by id
-	PATCH /customers/{id}					Update a customer
-	PUT /customers/{id}						Replace a customer by new data
-	GET /customers/{id}/orders/				Get the orders of a customer
-	POST /customers/{id}/orders/			Create an order for a customer
-	*/
-	
 	
     @Test
     public void getCustomers() throws Exception {
@@ -155,39 +137,49 @@ public class ClientControllerTest {
     	
     	verify(clientService, times(1)).creerClient(any());
     }
-    
-    
-	
-	/*
-	DELETE /customers/{id}					Delete a customer
-	PATCH /customers/{id}					Update a customer
-	PUT /customers/{id}						Replace a customer by new data
-	GET /customers/{id}/orders/				Get the orders of a customer
-	POST /customers/{id}/orders/			Create an order for a customer
-	*/
-	
 
-	
-    // TODO
-//    @Test
-//    public void updateCustomer() throws Exception {
-//    	
-//    	clientService.majClientParId(null, null)
-//    	
-//		PATCH /customers/{id}					Update a customer
-//    }
-//    
-    // TODO
-//    @Test
-//    public void replaceCustomer() throws Exception {
-//    	
-//    	clientService.remplacerClientParId(null, null)
-//    	
-//    	PUT /customers/{id}						Replace a customer by new data
-//    }
-//    
-    
-    // TODO
+    @Test
+    public void updateCustomer() throws Exception {
+    	
+    	/* Mockito Standard - Given */
+    	ClientDto clientDto01 = new ClientDto();
+    	clientDto01.setId(ID_01);
+    	clientDto01.setNomDeFamille(NOM_DE_FAMILLE_01);
+    	clientDto01.setPrenom(PRENOM_DE_FAMILLE_01);
+    	clientDto01.setUrlClient(URL_CLIENT_01);
+    	
+    	/* Mockito Standard - When */
+    	Mockito.when(clientService.majClientParId(anyLong(), any())).thenReturn(clientDto01);
+    	
+    	/* Mockito Standard - Then */
+    	mockMvc.perform(
+    				MockMvcRequestBuilders.patch(API_V1_FULL_URL + "/1")
+    				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+    			)
+    			.andExpect(status().isOk());
+    }
+
+    @Test
+    public void replaceCustomer() throws Exception {
+    	
+    	/* Mockito Standard - Given */
+    	ClientDto clientDto01 = new ClientDto();
+    	clientDto01.setId(ID_01);
+    	clientDto01.setNomDeFamille(NOM_DE_FAMILLE_01);
+    	clientDto01.setPrenom(PRENOM_DE_FAMILLE_01);
+    	clientDto01.setUrlClient(URL_CLIENT_01);
+    	
+    	/* Mockito Standard - When */
+    	Mockito.when(clientService.remplacerClientParId(anyLong(), any())).thenReturn(clientDto01);
+    	
+    	/* Mockito Standard - Then */
+    	mockMvc.perform(
+    				MockMvcRequestBuilders.put(API_V1_FULL_URL + "/1")
+    				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+    			)
+    			.andExpect(status().isOk());
+    }
+
     @Test
     public void deleteCustomer() throws Exception {
     	
@@ -204,25 +196,47 @@ public class ClientControllerTest {
     	
     	verify(clientService, times(1)).supprimerClientParId(anyLong());
     }
+
+    @Test
+    public void getOrderByCustomerId() throws Exception {
+    	
+    	/* Mockito Standard - Given */
+    	CommandeDto commandeDto01 = new CommandeDto();
+    	commandeDto01.setId(ID_01);
+    	commandeDto01.setNumeroDeCommande(NUMERO_DE_COMMANDE);
+    	commandeDto01.setQuantiteArticle(QUANTITE_ARTICLE);
+    	commandeDto01.setCodeBarre(CODE_BARRE);
+    	
+    	/* Mockito Standard - When */
+    	Mockito.when(clientService.recupererCommandeClientParId(anyLong())).thenReturn(commandeDto01);
+    	
+    	/* Mockito Standard - Then */
+    	mockMvc.perform(
+    				MockMvcRequestBuilders.get(API_V1_FULL_URL + "/1/orders")
+    				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+    			)
+    			.andExpect(status().isOk());
+    }
+
+    @Test
+    public void createOrderByCustomerId() throws Exception {
+    	
+    	/* Mockito Standard - Given */
+    	CommandeDto commandeDto01 = new CommandeDto();
+    	commandeDto01.setId(ID_01);
+    	commandeDto01.setNumeroDeCommande(NUMERO_DE_COMMANDE);
+    	commandeDto01.setQuantiteArticle(QUANTITE_ARTICLE);
+    	commandeDto01.setCodeBarre(CODE_BARRE);
+    	
+    	/* Mockito Standard - When */
+    	Mockito.when(clientService.creerCommandeClientParId(anyLong(), any())).thenReturn(commandeDto01);
     
-    
-    
-    // TODO
-//    @Test
-//    public void getOrderByCustomerId() throws Exception {
-//    	
-//    	clientService.recupererCommandeClientParId(null)
-//    	
-//    	GET /customers/{id}/orders/				Get the orders of a customer
-//    }
-//    
-    // TODO
-//    @Test
-//    public void createOrderByCustomerId() throws Exception {
-//    	
-//    	clientService.creerCommandeClientParId(null)
-//    	
-//    	POST /customers/{id}/orders/			Create an order for a customer
-//    }
+    	/* Mockito Standard - Then */
+    	mockMvc.perform(
+    				MockMvcRequestBuilders.post(API_V1_FULL_URL + "/1/orders")
+    				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+    			)
+    			.andExpect(status().isOk());
+    }
     
 }

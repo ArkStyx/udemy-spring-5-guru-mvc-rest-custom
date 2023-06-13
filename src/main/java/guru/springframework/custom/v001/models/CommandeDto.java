@@ -11,7 +11,8 @@ import lombok.Setter;
 @AllArgsConstructor
 public class CommandeDto {
 
+    private Long id;
 	private String numeroDeCommande;
-    private String quantiteArticle;
+    private Long quantiteArticle;
     private String codeBarre;
 }

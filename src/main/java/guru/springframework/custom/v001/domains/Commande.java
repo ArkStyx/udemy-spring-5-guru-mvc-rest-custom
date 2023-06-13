@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,4 +18,14 @@ public class Commande {
     private Long id;
 	
 	private String numeroDeCommande;
+	
+	// TODO A SUPPRIMER -----------------------------------------------------------------------------------------------------------------------------
+	// TODO A SUPPRIMER -----------------------------------------------------------------------------------------------------------------------------
+	// TODO A SUPPRIMER -----------------------------------------------------------------------------------------------------------------------------
+	@ManyToOne
+	private Client client;
+	// TODO A SUPPRIMER -----------------------------------------------------------------------------------------------------------------------------
+	// TODO A SUPPRIMER -----------------------------------------------------------------------------------------------------------------------------
+	// TODO A SUPPRIMER -----------------------------------------------------------------------------------------------------------------------------
+	
 }

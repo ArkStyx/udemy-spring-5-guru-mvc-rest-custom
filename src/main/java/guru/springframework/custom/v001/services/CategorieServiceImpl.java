@@ -10,6 +10,7 @@ import guru.springframework.custom.v001.mappers.CategorieMapper;
 import guru.springframework.custom.v001.models.CategorieDto;
 import guru.springframework.custom.v001.repositories.CategorieRepository;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @Service

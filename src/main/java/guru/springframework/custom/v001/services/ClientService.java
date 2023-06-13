@@ -11,15 +11,15 @@ public interface ClientService {
 	
 	ClientDto recupererClientParId(Long id);
 	
-	ClientDto creerClient(ClientDto customerDto);
+	ClientDto creerClient(ClientDto clientDto);
 	
-	ClientDto majClientParId(Long id, ClientDto customerDto);
+	ClientDto majClientParId(Long id, ClientDto clientDto);
 	
-	ClientDto remplacerClientParId(Long id, ClientDto customerDto);
+	ClientDto remplacerClientParId(Long id, ClientDto clientDto);
 	
 	void supprimerClientParId(Long id);
 	
 	CommandeDto recupererCommandeClientParId(Long id);
 	
-	CommandeDto creerCommandeClientParId(CommandeDto orderDto);
+	CommandeDto creerCommandeClientParId(Long id, CommandeDto commandeDto);
 }
