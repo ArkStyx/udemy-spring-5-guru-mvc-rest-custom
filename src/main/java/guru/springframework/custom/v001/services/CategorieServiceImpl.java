@@ -10,7 +10,6 @@ import guru.springframework.custom.v001.mappers.CategorieMapper;
 import guru.springframework.custom.v001.models.CategorieDto;
 import guru.springframework.custom.v001.repositories.CategorieRepository;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @Service
@@ -19,7 +18,7 @@ public class CategorieServiceImpl implements CategorieService {
     private final CategorieMapper categorieMapper;
     
     private final CategorieRepository categorieRepository;
-	
+
 	@Override
 	public List<CategorieDto> recupererListeDesCategories() {
 		List<CategorieDto> listeCategoryDto = categorieRepository.findAll()

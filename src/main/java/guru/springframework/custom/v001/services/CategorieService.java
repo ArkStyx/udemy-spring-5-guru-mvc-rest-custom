@@ -7,5 +7,6 @@ import guru.springframework.custom.v001.models.CategorieDto;
 public interface CategorieService {
 
 	List<CategorieDto> recupererListeDesCategories();
+	
 	CategorieDto recupererCategorieParId(Long id);
 }

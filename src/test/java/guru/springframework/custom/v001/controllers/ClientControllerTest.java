@@ -26,7 +26,6 @@ import guru.springframework.custom.v001.services.ClientService;
 
 public class ClientControllerTest {
 
-	
 	private static final String API_V1_FULL_URL = "/api/v1/customers";
 	
 	private static final Long ID_01 = 1L;
