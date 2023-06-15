@@ -1,8 +1,8 @@
 package guru.springframework.custom.v001.controllers;
 
-public class VendorControllerTest {
+public class ArticleControllerTest {
 
-	// TODO FIXME
+	// TODO FIXME 02
 	
    	/* Mockito Standard - Given */
 	/* Mockito Standard - When */

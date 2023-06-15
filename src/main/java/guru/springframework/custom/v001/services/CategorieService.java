@@ -9,4 +9,5 @@ public interface CategorieService {
 	List<CategorieDto> recupererListeDesCategories();
 	
 	CategorieDto recupererCategorieParId(Long id);
+	
 }

@@ -21,11 +21,11 @@ public class CategorieServiceImpl implements CategorieService {
 
 	@Override
 	public List<CategorieDto> recupererListeDesCategories() {
-		List<CategorieDto> listeCategoryDto = categorieRepository.findAll()
+		List<CategorieDto> listeCategorieDto = categorieRepository.findAll()
                 .stream()
                 .map(categorieMapper::categorieVersCategorieDto)
                 .collect(Collectors.toList());
-		return listeCategoryDto;
+		return listeCategorieDto;
 	}
 
 	@Override

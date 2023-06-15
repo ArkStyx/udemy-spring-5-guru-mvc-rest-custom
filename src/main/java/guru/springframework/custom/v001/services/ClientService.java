@@ -22,4 +22,5 @@ public interface ClientService {
 	CommandeDto recupererCommandeClientParId(Long id);
 	
 	CommandeDto creerCommandeClientParId(Long id, CommandeDto commandeDto);
+	
 }

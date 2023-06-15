@@ -47,13 +47,13 @@ public class CategorieControllerTest_BDD {
 //    public void getCategoryById_BDD() {
 //    	
 //    	/* Behaviour Driven Development - Given */
-//    	BDDMockito.given(XXX);
+//    	BDDMockito.given(XXXXX);
 //    	
 //    	/* Behaviour Driven Development - When */
-//    	BDDMockito.when(XXX);
+//    	BDDMockito.when(XXXXX);
 //    	
 //    	/* Behaviour Driven Development - Then */
-//    	BDDMockito.then(XXX);
+//    	BDDMockito.then(XXXXX);
 //    	
 //    	
 //    	recupererCategorieParId

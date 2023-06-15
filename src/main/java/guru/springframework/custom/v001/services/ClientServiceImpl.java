@@ -30,11 +30,11 @@ public class ClientServiceImpl implements ClientService {
 	
 	@Override
 	public List<ClientDto> recupererListeDesClients() {
-		List<ClientDto> listeCustomerDto = clientRepository.findAll()
+		List<ClientDto> listeClientDto = clientRepository.findAll()
 				.stream()
 				.map(clientMapper::clientVersClientDto)
 				.collect(Collectors.toList());
-		return listeCustomerDto;
+		return listeClientDto;
 	}
 
 	@Override
@@ -84,17 +84,6 @@ public class ClientServiceImpl implements ClientService {
 		return commandeMapper.commandeVersCommandeDto(commandeTrouvee);
 	}
 
-	
-	// TODO A SUPPRIMER -----------------------------------------------------------------------------------------------------------------------------
-	// TODO A SUPPRIMER -----------------------------------------------------------------------------------------------------------------------------
-	// TODO A SUPPRIMER -----------------------------------------------------------------------------------------------------------------------------
-//	@Override
-//	public CommandeDto creerCommandeClientParId(CommandeDto commandeDto) {
-//		Commande commande = commandeMapper.commandeDtoVersCommande(commandeDto);
-//		return sauvegarderEtRetournerCommandeDto(commande);
-//	}
-	
-	// TODO A MODIFIER
 	@Override
 	public CommandeDto creerCommandeClientParId(Long id, CommandeDto commandeDto) {
 		Commande commande = commandeMapper.commandeDtoVersCommande(commandeDto);
@@ -107,10 +96,7 @@ public class ClientServiceImpl implements ClientService {
         CommandeDto commandeSauvegardee = commandeMapper.commandeVersCommandeDto(commandePourSauvegarde);
         return commandeSauvegardee;
 	}
-	// TODO A SUPPRIMER -----------------------------------------------------------------------------------------------------------------------------
-	// TODO A SUPPRIMER -----------------------------------------------------------------------------------------------------------------------------
-	// TODO A SUPPRIMER -----------------------------------------------------------------------------------------------------------------------------
-	
+
     private ClientDto sauvegarderEtRetournerClientDto(Client client) {
         Client clientPourSauvegarde = clientRepository.save(client);
         ClientDto clientSauvegarde = clientMapper.clientVersClientDto(clientPourSauvegarde);

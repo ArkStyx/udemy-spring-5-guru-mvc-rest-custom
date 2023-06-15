@@ -26,7 +26,7 @@ public interface ArticleService {
 	
 	
 	/*
-	TODO FIXME
+	TODO FIXME CONTROLLER
 	
 	GET /products/					Lists all the products
 	GET /products/{id}				Get a product by id
