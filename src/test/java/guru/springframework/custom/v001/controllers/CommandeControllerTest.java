@@ -1,16 +1,26 @@
 package guru.springframework.custom.v001.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.springframework.http.HttpStatus;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import guru.springframework.custom.v001.models.ArticleDto;
+import guru.springframework.custom.v001.models.ArticleListeDto;
 import guru.springframework.custom.v001.models.CommandeDto;
+import guru.springframework.custom.v001.models.CommandeListeDto;
 import guru.springframework.custom.v001.services.CommandeService;
 
 public class CommandeControllerTest {
@@ -19,6 +29,14 @@ public class CommandeControllerTest {
 	
 	private static final Long ID_01 = 1L;
 	private static final Long ID_02 = 2L;
+	
+	private static final String NUMERO_DE_COMMANDE_01 = "ABC_0123456789";
+	private static final Long QUANTITE_ARTICLE_01 = 1L;
+	private static final String CODE_BARRE_01 = "AB01CD02EF03";
+	
+	private static final String NUMERO_DE_COMMANDE_02 = "CDE_0123456789";
+	private static final Long QUANTITE_ARTICLE_02 = 1L;
+	private static final String CODE_BARRE_02 = "GH01IJ02KL03";
 	
 	// TODO FIXME 01
 	
@@ -61,22 +79,113 @@ public class CommandeControllerTest {
 	GET /orders/{oid}/items/{iid}			Get an item of an order
 	*/
     
-	List<CommandeDto> recupererListeDesCommandes();
-	
-	CommandeDto recupererCommandeParId(Long id);
-	
-	void supprimerCommandeParId(Long id);
-	
-	CommandeDto annulerCommandeParId(Long id);
-	
-	CommandeDto acheterCommandeParId(Long id);
 
-	ArticleDto recupererArticleDansCommandeParId(Long id);
+    @Test
+	public void recupererListeDesCommandes() {
+       	/* Mockito Standard - Given */
+    	CommandeDto commandeDto01 = new CommandeDto();
+    	commandeDto01.setId(ID_01);
+    	commandeDto01.setNumeroDeCommande(NUMERO_DE_COMMANDE_01);
+    	commandeDto01.setQuantiteArticle(QUANTITE_ARTICLE_01);
+    	commandeDto01.setCodeBarre(CODE_BARRE_01);
+    	
+    	CommandeDto commandeDto02 = new CommandeDto();
+    	commandeDto02.setId(ID_02);
+    	commandeDto02.setNumeroDeCommande(NUMERO_DE_COMMANDE_02);
+    	commandeDto02.setQuantiteArticle(QUANTITE_ARTICLE_02);
+    	commandeDto02.setCodeBarre(CODE_BARRE_02);
+    	
+    	List<CommandeDto> listeCommandeDto = new ArrayList<>();
+    	listeCommandeDto.add(commandeDto01);
+    	listeCommandeDto.add(commandeDto02);
+    	
+    	/* Mockito Standard - When */
+    	Mockito.when(commandeService.recupererListeDesCommandes()).thenReturn(listeCommandeDto);
+    	
+    	/* Mockito Standard - Then */
+		XXX
+		XXX
+		XXX
+    	List<CommandeDto> recupererListeDesCommandes();
+	}
+    
+    @Test
+	public void recupererCommandeParId() {
+       	/* Mockito Standard - Given */
+    	/* Mockito Standard - When */
+    	/* Mockito Standard - Then */
+    	
+    	
+    	CommandeDto recupererCommandeParId(Long idCommande);
+	}
 	
-	ArticleDto ajouterArticleDansCommandeParId(Long id);
+    @Test
+	public void supprimerCommandeParId() {
+       	/* Mockito Standard - Given */
+    	/* Mockito Standard - When */
+    	/* Mockito Standard - Then */
+		
+    	
+    	void supprimerCommandeParId(Long idCommande);
+	}
 	
-	void supprimerArticleDansCommandeParId(Long idCommande, Long idArticle);
-	
-	ArticleDto recupererArticleDansCommandeClientParId(Long idCommande, Long idArticle);
+    @Test
+	public void annulerCommandeParId() {
+       	/* Mockito Standard - Given */
+    	/* Mockito Standard - When */
+    	/* Mockito Standard - Then */
+		
+    	
+    	CommandeDto annulerCommandeParId(Long idCommande);
+	}
+
+    @Test
+	public void passerCommandeParId() {
+       	/* Mockito Standard - Given */
+    	/* Mockito Standard - When */
+    	/* Mockito Standard - Then */
+		
+    	
+    	CommandeDto passerCommandeParId(Long idCommande);
+	}
+
+    @Test
+	public void recupererListeArticlesDansCommandeParId() {
+       	/* Mockito Standard - Given */
+    	/* Mockito Standard - When */
+    	/* Mockito Standard - Then */
+		
+
+    	List<ArticleDto> recupererListeArticlesDansCommandeParId(Long idCommande);
+	}
+
+    @Test
+	public void ajouterArticleDansCommandeParId() {
+       	/* Mockito Standard - Given */
+    	/* Mockito Standard - When */
+    	/* Mockito Standard - Then */
+		
+    	
+    	List<ArticleDto> ajouterArticleDansCommandeParId(Long idCommande, ArticleDto articleDto);
+	}
+
+    @Test
+	public void supprimerArticleDansCommandeParId() {
+       	/* Mockito Standard - Given */
+    	/* Mockito Standard - When */
+    	/* Mockito Standard - Then */
+		
+    	
+    	void supprimerArticleDansCommandeParId(Long idCommande, Long idArticle);
+	}
+
+    @Test
+	public void recupererArticleDansCommandeClientParId() {
+       	/* Mockito Standard - Given */
+    	/* Mockito Standard - When */
+    	/* Mockito Standard - Then */
+		   	
+    	ArticleDto recupererArticleDansCommandeClientParId(Long idCommande, Long idArticle);
+	}
     
 }

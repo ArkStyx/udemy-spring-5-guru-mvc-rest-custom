@@ -40,9 +40,9 @@ public class ClientControllerTest {
 	private static final String URL_CLIENT_01 = "dupont_001";
 	private static final String URL_CLIENT_02 = "dupuis_001";
 	
-	private static final String NUMERO_DE_COMMANDE = "ABC_0123456789";
-	private static final Long QUANTITE_ARTICLE = 1L;
-	private static final String CODE_BARRE = "AB01CD02EF03";
+	private static final String NUMERO_DE_COMMANDE_01 = "ABC_0123456789";
+	private static final Long QUANTITE_ARTICLE_01 = 1L;
+	private static final String CODE_BARRE_01 = "AB01CD02EF03";
 	
 	@Mock
 	ClientService clientService;
@@ -202,9 +202,9 @@ public class ClientControllerTest {
     	/* Mockito Standard - Given */
     	CommandeDto commandeDto01 = new CommandeDto();
     	commandeDto01.setId(ID_01);
-    	commandeDto01.setNumeroDeCommande(NUMERO_DE_COMMANDE);
-    	commandeDto01.setQuantiteArticle(QUANTITE_ARTICLE);
-    	commandeDto01.setCodeBarre(CODE_BARRE);
+    	commandeDto01.setNumeroDeCommande(NUMERO_DE_COMMANDE_01);
+    	commandeDto01.setQuantiteArticle(QUANTITE_ARTICLE_01);
+    	commandeDto01.setCodeBarre(CODE_BARRE_01);
     	
     	/* Mockito Standard - When */
     	Mockito.when(clientService.recupererCommandeClientParId(anyLong())).thenReturn(commandeDto01);
@@ -223,9 +223,9 @@ public class ClientControllerTest {
     	/* Mockito Standard - Given */
     	CommandeDto commandeDto01 = new CommandeDto();
     	commandeDto01.setId(ID_01);
-    	commandeDto01.setNumeroDeCommande(NUMERO_DE_COMMANDE);
-    	commandeDto01.setQuantiteArticle(QUANTITE_ARTICLE);
-    	commandeDto01.setCodeBarre(CODE_BARRE);
+    	commandeDto01.setNumeroDeCommande(NUMERO_DE_COMMANDE_01);
+    	commandeDto01.setQuantiteArticle(QUANTITE_ARTICLE_01);
+    	commandeDto01.setCodeBarre(CODE_BARRE_01);
     	
     	/* Mockito Standard - When */
     	Mockito.when(clientService.creerCommandeClientParId(anyLong(), any())).thenReturn(commandeDto01);

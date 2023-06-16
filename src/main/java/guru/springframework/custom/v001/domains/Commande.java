@@ -1,5 +1,8 @@
 package guru.springframework.custom.v001.domains;
 
+import java.sql.Timestamp;
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,4 +25,9 @@ public class Commande {
 	@ManyToOne
 	private Client client;
 
+	private Timestamp dateHeureAchat;
+	
+	private Timestamp dateHeureAnnulation;
+	
+	private List<Article> listeArticles;
 }

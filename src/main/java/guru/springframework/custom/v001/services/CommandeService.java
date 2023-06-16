@@ -9,17 +9,17 @@ public interface CommandeService {
 
 	List<CommandeDto> recupererListeDesCommandes();
 	
-	CommandeDto recupererCommandeParId(Long id);
+	CommandeDto recupererCommandeParId(Long idCommande);
 	
-	void supprimerCommandeParId(Long id);
+	void supprimerCommandeParId(Long idCommande);
 	
-	CommandeDto annulerCommandeParId(Long id);
+	CommandeDto annulerCommandeParId(Long idCommande);
 	
-	CommandeDto acheterCommandeParId(Long id);
+	CommandeDto passerCommandeParId(Long idCommande);
 
-	ArticleDto recupererArticleDansCommandeParId(Long id);
+	List<ArticleDto> recupererListeArticlesDansCommandeParId(Long idCommande);
 	
-	ArticleDto ajouterArticleDansCommandeParId(Long id);
+	List<ArticleDto> ajouterArticleDansCommandeParId(Long idCommande, ArticleDto articleDto);
 	
 	void supprimerArticleDansCommandeParId(Long idCommande, Long idArticle);
 	

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import guru.springframework.custom.ApiConnectionUtilities;
 import guru.springframework.custom.v001.models.ArticleDto;
+import guru.springframework.custom.v001.models.ArticleListeDto;
 import guru.springframework.custom.v001.models.CommandeDto;
 import guru.springframework.custom.v001.models.CommandeListeDto;
 import guru.springframework.custom.v001.services.CommandeService;
@@ -32,38 +33,38 @@ public class CommandeController {
 	
 	@GetMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
-	public CommandeDto recupererCommandeParId(Long id) {
-		return commandeService.recupererCommandeParId(id);
+	public CommandeDto recupererCommandeParId(Long idCommande) {
+		return commandeService.recupererCommandeParId(idCommande);
 	}
 	
 	@DeleteMapping()
     @ResponseStatus(HttpStatus.OK)
-	public void supprimerCommandeParId(Long id) {
-		commandeService.supprimerCommandeParId(id);
+	public void supprimerCommandeParId(Long idCommande) {
+		commandeService.supprimerCommandeParId(idCommande);
 	}
 	
 	@PostMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
-	public CommandeDto annulerCommandeParId(Long id) {
-		return commandeService.annulerCommandeParId(id);
+	public CommandeDto annulerCommandeParId(Long idCommande) {
+		return commandeService.annulerCommandeParId(idCommande);
 	}
 	
 	@PostMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
-	public CommandeDto acheterCommandeParId(Long id) {
-		return commandeService.acheterCommandeParId(id);
+	public CommandeDto passerCommandeParId(Long idCommande) {
+		return commandeService.passerCommandeParId(idCommande);
 	}
 	
 	@GetMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
-	public ArticleDto recupererArticleDansCommandeParId(Long id) {
-		return commandeService.recupererArticleDansCommandeParId(id);
+	public ArticleListeDto recupererListeArticlesDansCommandeParId(Long idCommande) {
+		return new ArticleListeDto(commandeService.recupererListeArticlesDansCommandeParId(idCommande));
 	}
 	
 	@PostMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
-	public ArticleDto ajouterArticleDansCommandeParId(Long id) {
-		return commandeService.ajouterArticleDansCommandeParId(id);
+	public ArticleListeDto ajouterArticleDansCommandeParId(Long idCommande, ArticleDto articleDto) {
+		return new ArticleListeDto(commandeService.ajouterArticleDansCommandeParId(idCommande, articleDto));
 	}
 
 	@DeleteMapping("{idCommande, idArticle}")
