@@ -1,5 +1,9 @@
 package guru.springframework.custom.v001.controllers;
 
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +14,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -81,7 +87,8 @@ public class CommandeControllerTest {
     
 
     @Test
-	public void recupererListeDesCommandes() {
+	public void recupererListeDesCommandes() throws Exception {
+    	
        	/* Mockito Standard - Given */
     	CommandeDto commandeDto01 = new CommandeDto();
     	commandeDto01.setId(ID_01);
@@ -103,10 +110,13 @@ public class CommandeControllerTest {
     	Mockito.when(commandeService.recupererListeDesCommandes()).thenReturn(listeCommandeDto);
     	
     	/* Mockito Standard - Then */
-		XXX
-		XXX
-		XXX
-    	List<CommandeDto> recupererListeDesCommandes();
+    	mockMvc.perform(
+				MockMvcRequestBuilders.get(API_V1_FULL_URL)
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+			)
+			.andExpect(status().isOk());
+	
+    	verify(commandeService, times(1)).recupererListeDesCommandes();
 	}
     
     @Test

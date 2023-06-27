@@ -43,37 +43,37 @@ public class CommandeController {
 		commandeService.supprimerCommandeParId(idCommande);
 	}
 	
-	@PostMapping("{id}")
+	@PostMapping("{id}/actions/cancel")
     @ResponseStatus(HttpStatus.OK)
 	public CommandeDto annulerCommandeParId(Long idCommande) {
 		return commandeService.annulerCommandeParId(idCommande);
 	}
 	
-	@PostMapping("{id}")
+	@PostMapping("{id}/actions/purchase")
     @ResponseStatus(HttpStatus.OK)
 	public CommandeDto passerCommandeParId(Long idCommande) {
 		return commandeService.passerCommandeParId(idCommande);
 	}
 	
-	@GetMapping("{id}")
+	@GetMapping("{id}/items")
     @ResponseStatus(HttpStatus.OK)
 	public ArticleListeDto recupererListeArticlesDansCommandeParId(Long idCommande) {
 		return new ArticleListeDto(commandeService.recupererListeArticlesDansCommandeParId(idCommande));
 	}
 	
-	@PostMapping("{id}")
+	@PostMapping("{id}/items")
     @ResponseStatus(HttpStatus.OK)
 	public ArticleListeDto ajouterArticleDansCommandeParId(Long idCommande, ArticleDto articleDto) {
 		return new ArticleListeDto(commandeService.ajouterArticleDansCommandeParId(idCommande, articleDto));
 	}
 
-	@DeleteMapping("{idCommande, idArticle}")
+	@DeleteMapping("{oid}/items/{iid}")
     @ResponseStatus(HttpStatus.OK)
 	public void supprimerArticleDansCommandeParId(Long idCommande, Long idArticle) {
 		commandeService.supprimerArticleDansCommandeParId(idCommande, idArticle);
 	}
 	
-	@GetMapping("{idCommande, idArticle}")
+	@GetMapping("{oid}/items/{iid}")
     @ResponseStatus(HttpStatus.OK)
 	public ArticleDto recupererArticleDansCommandeClientParId(Long idCommande, Long idArticle) {
 		return commandeService.recupererArticleDansCommandeClientParId(idCommande, idArticle);
